@@ -1,0 +1,29 @@
+<form id="chat-form">
+  <input
+    type="text"
+    id="msg-input"
+    placeholder="Type here..."
+    autocomplete="off"
+  />
+  <button type="submit">Send</button>
+</form>
+
+<div id="chat-box"></div>
+
+<script>
+  document.getElementById("chat-form").onsubmit = async function (e) {
+    e.preventDefault();
+    let msg = document.getElementById("msg-input").value;
+    if (!msg.trim()) return;
+    let res = await fetch("/chatbot/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg }),
+    });
+    let data = await res.json();
+    document.getElementById(
+      "chat-box"
+    ).innerHTML += `<p><b>You:</b> ${msg}</p><p><b>Bot:</b> ${data.reply}</p>`;
+    document.getElementById("msg-input").value = "";
+  };
+</script>
