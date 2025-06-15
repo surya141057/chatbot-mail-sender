@@ -11,9 +11,6 @@ Sends the generated letter via email to the recipient.
 Web API endpoint for chatbot interaction (/chatbot/).
 
 🗂️ Project Structure
-bash
-Copy
-Edit
 chatbot-mail-sender/
 │
 ├── chatbotenv/                # Virtual environment (not pushed to Git)
@@ -32,52 +29,36 @@ chatbot-mail-sender/
 ├── manage.py                  # Django command-line utility
 ├── .env                       # Stores environment variables (API keys, passwords)
 🔧 Setup Instructions
+
 1. Clone the Repository
-bash
-Copy
-Edit
 git clone https://github.com/your-username/chatbot-mail-sender.git
 cd chatbot-mail-sender
-2. Set up Virtual Environment
-bash
-Copy
-Edit
+
+3. Set up Virtual Environment
 python -m venv chatbotenv
 source chatbotenv/bin/activate  # Linux/macOS
 chatbotenv\Scripts\activate     # Windows
-3. Install Dependencies
-bash
-Copy
-Edit
+
+4. Install Dependencies
 pip install -r requirements.txt
 If requirements.txt is not created, you can install manually:
-
-bash
-Copy
-Edit
 pip install django openai python-dotenv
-4. Configure Environment Variables
+
+5. Configure Environment Variables
 Create a .env file in the root directory:
 
-env
-Copy
-Edit
 OPENAI_API_KEY=your_openai_api_key
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
-5. Apply Migrations and Run Server
-bash
-Copy
-Edit
+6. Apply Migrations and Run Server
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-6. Use the Chatbot
+
+7. Use the Chatbot
 Send a POST request to the endpoint:
 
 http
-Copy
-Edit
 POST http://localhost:8000/chatbot/
 Content-Type: application/json
 
